@@ -1,20 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { SafeAreaView, } from 'react-native';
+import { ThemeProvider } from 'styled-components';
+import dark from './src/theme/dark';
+import light from './src/theme/light';
+import { Container, GroupButton, Resulte, CircleButton } from './styles';
+
 
 export default function App() {
+  const [value, setValue] = useState(0)
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={light}>
+      <Container>
+        <StatusBar style='light' />
+        <SafeAreaView>
+          <Resulte>
+            {value}
+          </Resulte>
+          <GroupButton>
+            <CircleButton />
+          </GroupButton>
+        </SafeAreaView>
+      </Container>
+    </ThemeProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
